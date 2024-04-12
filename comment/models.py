@@ -5,7 +5,7 @@ from post.models import Post
 
 # Create your models here.
 class CommentPost(models.Model):
-    user = models.ManyToManyField(User, on_delete=models.CASCADE)
+    user = models.ManyToManyField(User)
     content = models.TextField()
     image = models.TextField()
     create_at = models.DateTimeField(auto_now_add=True)
