@@ -29,3 +29,4 @@ class UserView(APIView):
             # Si los datos no son válidos, devuelve una respuesta con los errores y un código de estado 400 (BAD REQUEST)
             return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error':'not found'})
+    

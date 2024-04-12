@@ -5,10 +5,11 @@ from post.models import Post
 
 # Create your models here.
 class CommentPost(models.Model):
-    user = models.ManyToManyField(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     image = models.TextField()
     create_at = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
