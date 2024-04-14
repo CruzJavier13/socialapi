@@ -45,11 +45,19 @@ class CommentView(APIView):
         return Response(request.data, status=status.HTTP_400_BAD_REQUEST)
         """
     
-    def delete(self,request, pk=None, *args, **kwargs):
-        return Response({"Message":"Error"})
+    def delete(self, request, pk=None, *args, **kwargs):
+        instance = get_object_or_404(CommentPost, pk=pk)
+        if instance:
+            instance.delete()
+        return Response({"Message":f"deleted comment {pk}"}, status=status.HTTP_204_NO_CONTENT)
     
-    def patch(self, request, *args, **kwargs):
-        return Response({"Message":"Error"})
+    def patch(self, request, pk, *args, **kwargs):
+        instance = get_object_or_404(CommentPost, pk=pk)
+        comment_serializer = CommentSerializer(instance, request.data, partial=True)
+        if comment_serializer.is_valid():
+            comment_serializer.save()
+            return Response(request.data, status=status.HTTP_200_OK)
+        return Response(request.data, status=status.HTTP_400_BAD_REQUEST)
     
 class LikePostView(APIView):
 
