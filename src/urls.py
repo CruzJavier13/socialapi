@@ -11,4 +11,5 @@ urlpatterns = [
     path('socialapi/', include('post.urls')),
     path('socialapi/', include('comment.urls')),
     path('socialapi/', include('conversation.urls')),
+    path('socialapi/', include('notification.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

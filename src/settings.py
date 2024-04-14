@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'conversation',
     'user',
     'post',
+    'notification',
 ]
 
 MIDDLEWARE = [
