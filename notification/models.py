@@ -8,3 +8,6 @@ class Notification(models.Model):
 
     class Meta:
         db_table='tbl_notification'
+    
+    def __str__(self):
+        return self.is_view
